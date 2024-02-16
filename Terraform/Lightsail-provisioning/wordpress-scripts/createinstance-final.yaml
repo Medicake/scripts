@@ -1,0 +1,11 @@
+instanceNames:  # [REQUIRED] The names for your new instances.
+- dantest-Instance
+availabilityZone: 'us-east-1d' # [REQUIRED] The Availability Zone where you want to create your instances.
+instanceSnapshotName: 'Skeleton-02062023' # The name of the instance snapshot on which you are basing your new instances on.
+bundleId: 'micro_2_0' # [REQUIRED] The bundle of specification information for your virtual private server (or instance), including the pricing plan (e.
+keyPairName: 'dantest-WP-2023' # The name for your key pair.
+addOns: # An array of objects representing the add-ons to enable for the new instance.
+- addOnType: AutoSnapshot  # [REQUIRED] The add-on type. Valid values are: AutoSnapshot.
+  autoSnapshotAddOnRequest: # An object that represents additional parameters when enabling or modifying the automatic snapshot add-on.
+    snapshotTimeOfDay: '04:00'  # The daily time when an automatic snapshot will be created.
+ipAddressType: dualstack # The IP address type for the instance. Valid values are: dualstack, ipv4.

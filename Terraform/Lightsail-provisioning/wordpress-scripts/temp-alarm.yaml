@@ -1,0 +1,16 @@
+cat <<EOF >./wordpress-scripts/createalarm-final.yaml
+alarmName: ${client}-CPU-ALARM  # [REQUIRED] The name for the alarm.
+metricName: CPUUtilization # [REQUIRED] The name of the metric to associate with the alarm. Valid values are: CPUUtilization, NetworkIn, NetworkOut, StatusCheckFailed, StatusCheckFailed_Instance, StatusCheckFailed_System, ClientTLSNegotiationErrorCount, HealthyHostCount, UnhealthyHostCount, HTTPCode_LB_4XX_Count, HTTPCode_LB_5XX_Count, HTTPCode_Instance_2XX_Count, HTTPCode_Instance_3XX_Count, HTTPCode_Instance_4XX_Count, HTTPCode_Instance_5XX_Count, InstanceResponseTime, RejectedConnectionCount, RequestCount, DatabaseConnections, DiskQueueDepth, FreeStorageSpace, NetworkReceiveThroughput, NetworkTransmitThroughput, BurstCapacityTime, BurstCapacityPercentage.
+monitoredResourceName: ${client}-Instance # [REQUIRED] The name of the Lightsail resource that will be monitored.
+comparisonOperator: GreaterThanOrEqualToThreshold # [REQUIRED] The arithmetic operation to use when comparing the specified statistic to the threshold. Valid values are: GreaterThanOrEqualToThreshold, GreaterThanThreshold, LessThanThreshold, LessThanOrEqualToThreshold.
+threshold: 80.0 # [REQUIRED] The value against which the specified statistic is compared.
+evaluationPeriods: 2 # [REQUIRED] The number of most recent periods over which data is compared to the specified threshold.
+datapointsToAlarm: 2 # The number of data points that must be not within the specified threshold to trigger the alarm.
+treatMissingData: ignore # Sets how this alarm will handle missing data points. Valid values are: breaching, notBreaching, ignore, missing.
+contactProtocols: # The contact protocols to use for the alarm, such as Email, SMS (text messaging), or both.
+- Email
+notificationTriggers: # The alarm states that trigger a notification.
+- ALARM
+- OK
+notificationEnabled: true # Indicates whether the alarm is enabled.
+EOF
